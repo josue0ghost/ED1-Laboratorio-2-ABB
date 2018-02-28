@@ -8,8 +8,8 @@ namespace Laboratorio_2_ABB.Models
 {
     public class Pais : IComparable
     {
-        [Key]
-        public int id { get; set; }
+        /*[Key]
+        public int id { get; set; }*/
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
         [Display(Name = "Grupo")]
