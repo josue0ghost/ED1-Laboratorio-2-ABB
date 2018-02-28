@@ -22,10 +22,10 @@ namespace Laboratorio_2_ABB.Clases
 
         public Tree<Pais> ABB = new Tree<Pais>();
         public List<Pais> listaPaises = new List<Pais>();
-        public Tree<string> stringABB = new Tree<string>();
-        public List<string> listaString = new List<string>();
-        public Tree<int> intABB = new Tree<int>();
-        public List<int> listaInt = new List<int>();
+        public Tree<StringNode> stringABB = new Tree<StringNode>();
+        public List<StringNode> listaString = new List<StringNode>();
+        public Tree<IntNode> intABB = new Tree<IntNode>();
+        public List<IntNode> listaInt = new List<IntNode>();
 
     }
 }

@@ -141,6 +141,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Data.cs" />
+    <Compile Include="Clases\JsonConverter.cs" />
     <Compile Include="Clases\Tree.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LecturaJson.cs" />
@@ -148,7 +149,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IntNode.cs" />
     <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\StringNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,10 +239,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Pais\IndexPais.cshtml" />
+    <Content Include="Views\Pais\Home.cshtml" />
+    <Content Include="Views\Pais\IndexInt.cshtml" />
+    <Content Include="Views\Pais\IndexString.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Pais\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+
+<div class="jumbotron">
+    <h1>MLS DATA MANAGER</h1>
+    <p class="lead">Proyect description here pls</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>List of Country's</h2>
+        <p>
+            Do you want to see a list of the countrys?
+        </p>
+        <p>@Html.ActionLink("Go", "IndexPais", "Pais")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of Int</h2>
+        <p>Do you want to see a list of numeric values?</p>
+        <p>@Html.ActionLink("Go", "IndexInt", "Pais")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>List of String</h2>
+        <p>Do you want to see a list of string values?</p>
+        <p>@Html.ActionLink("Go", "IndexString", "Pais")</p>
+    </div>
+</div>
+

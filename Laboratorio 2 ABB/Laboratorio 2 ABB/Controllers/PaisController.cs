@@ -3,15 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Laboratorio_2_ABB.Clases;
 
 namespace Laboratorio_2_ABB.Controllers
 {
     public class PaisController : Controller
     {
-        // GET: Pais
-        public ActionResult Index()
+        public ActionResult Home()
         {
             return View();
+        }
+            // GET: Pais
+            public ActionResult IndexPais()
+        {
+            Data.Instance.listaPaises.Add(new Models.Pais { id = Data.Instance.listaPaises.Count(), Nombre = "Guate", Grupo = "A" });
+            return View(Data.Instance.listaPaises);
+        }
+        // GET: int
+        public ActionResult IndexInt()
+        {
+            Data.Instance.listaInt.Add(new Models.IntNode { id = Data.Instance.listaInt.Count(), value = 4});
+            return View(Data.Instance.listaInt);
+        }
+
+        // GET: String
+        public ActionResult IndexString()
+        {
+            Data.Instance.listaString.Add(new Models.StringNode { id = Data.Instance.listaInt.Count(), value = "ValorUno" });
+            return View(Data.Instance.listaString);
         }
 
         // GET: Pais/Details/5
