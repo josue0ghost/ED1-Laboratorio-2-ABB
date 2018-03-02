@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using Laboratorio_2_ABB.Clases;
 using Newtonsoft.Json;
 
-namespace Laboratorio_2_ABB.Clases
+namespace ClassLibary1
 {
     public class JsonConverter<T>
     {

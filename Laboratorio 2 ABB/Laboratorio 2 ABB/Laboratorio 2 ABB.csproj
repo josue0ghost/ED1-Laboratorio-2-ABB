@@ -141,15 +141,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Data.cs" />
-    <Compile Include="Clases\JsonConverter.cs" />
-    <Compile Include="Clases\Tree.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LecturaJson.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IntNode.cs" />
     <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\StringNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +186,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="FileUpload\document.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -243,6 +241,9 @@
     <Content Include="Views\Pais\Home.cshtml" />
     <Content Include="Views\Pais\IndexInt.cshtml" />
     <Content Include="Views\Pais\IndexString.cshtml" />
+    <Content Include="Views\Pais\UploadInt.cshtml" />
+    <Content Include="Views\Pais\UploadString.cshtml" />
+    <Content Include="Views\Pais\UploadPais.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -255,6 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
+      <Project>{d652f9b4-5c3f-4fe7-92ff-9a4f648bd694}</Project>
+      <Name>ClassLibrary1</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

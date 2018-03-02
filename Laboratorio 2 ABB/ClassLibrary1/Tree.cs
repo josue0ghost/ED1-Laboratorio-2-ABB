@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Laboratorio_2_ABB.Clases
+namespace ClassLibary1
 {
     public class BinaryTreeNode<T>
     {
@@ -19,6 +19,8 @@ namespace Laboratorio_2_ABB.Clases
         }
 
         public BinaryTreeNode(T value) : this(value, null, null) { }
+
+        public BinaryTreeNode() { }
 
         public bool IsLeaf() { return Left == null && Right == null; }
 

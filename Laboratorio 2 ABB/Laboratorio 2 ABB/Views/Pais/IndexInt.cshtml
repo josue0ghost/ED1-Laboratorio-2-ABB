@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Laboratorio_2_ABB.Models.IntNode>
+﻿@model IEnumerable<int>
 
 @{
     ViewBag.Title = "IndexInt";
@@ -17,7 +17,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.value)
+            Numero
         </th>
         <th></th>
     </tr>
@@ -26,12 +26,12 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.value)
+                @Html.DisplayFor(modelItem => item)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new {  id = item }) |
+                @Html.ActionLink("Details", "Details", new { id = item }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item })
             </td>
         </tr>
     }

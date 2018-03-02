@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Laboratorio_2_ABB.Models.StringNode>
+﻿@model IEnumerable<string>
 
 @{
     ViewBag.Title = "IndexString";
@@ -7,17 +7,17 @@
 <h2>IndexString</h2>
 
 <p>
-    @Html.ActionLink("Upload Json File", "UploadInt")
+    @Html.ActionLink("Upload Json File", "Upload")
 </p>
 <p ALIGN="right">
-    @Html.ActionLink("Pre-Orden", "OrdenInt", new { order = "PreOrder" })&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("In-Orden", "OrdenInt", new { order = "InOrder" })&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("Post-orden", "OrdenInt", new { order = "PostOrder" })
+    @Html.ActionLink("Pre-Orden", "OrdenString", new { order = "PreOrder" })&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("In-Orden", "OrdenString", new { order = "InOrder" })&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("Post-orden", "OrdenString", new { order = "PostOrder" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.value)
+            Valor
         </th>
         <th></th>
     </tr>
@@ -26,12 +26,12 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.value)
+                @Html.DisplayFor(modelItem => item)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
             </td>
         </tr>
     }
