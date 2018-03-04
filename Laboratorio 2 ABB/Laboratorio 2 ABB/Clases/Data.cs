@@ -4,11 +4,7 @@ using System.Linq;
 using System.Web;
 using Laboratorio_2_ABB.Clases;
 using Laboratorio_2_ABB.Models;
-<<<<<<< HEAD
-using ClassLibary1;
-=======
 using Estructuras_de_datos;
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
 
 namespace Laboratorio_2_ABB.Clases
 {

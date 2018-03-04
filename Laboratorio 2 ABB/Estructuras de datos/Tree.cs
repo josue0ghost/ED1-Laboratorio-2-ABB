@@ -27,6 +27,8 @@ namespace Estructuras_de_datos
 
         public BinaryTreeNode(T value) : this(value, null, null, 0, 0) { }
 
+        public BinaryTreeNode() { }
+
         public bool IsLeaf() { return Left == null && Right == null; }
 
         public bool Full() { return Left != null && Right != null; }

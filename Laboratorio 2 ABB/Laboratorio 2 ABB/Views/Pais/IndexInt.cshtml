@@ -8,8 +8,12 @@
 
 <p>
     @Html.ActionLink("Upload Json File", "UploadInt")
+
+    @Html.ActionLink("Add Int", "AddInt")
 </p>
 <p ALIGN="right">
+    @Html.ActionLink("Is Degenerate?", "IsDegenerateInt")
+    @Html.ActionLink("Is Balanced?", "IsBalancedInt")
     @Html.ActionLink("Pre-Orden", "OrdenInt", new { order = "PreOrder" })&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("In-Orden", "OrdenInt", new { order = "InOrder" })&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("Post-orden", "OrdenInt", new { order = "PostOrder" })
@@ -29,11 +33,20 @@
                 @Html.DisplayFor(modelItem => item)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id = item }) |
-                @Html.ActionLink("Details", "Details", new { id = item }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item })
+                @*@Html.ActionLink("Edit", "Edit", new { id = item }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item }) |*@
+                @Html.ActionLink("Delete", "DeleteInt", new { id = item })
             </td>
         </tr>
     }
 
 </table>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}

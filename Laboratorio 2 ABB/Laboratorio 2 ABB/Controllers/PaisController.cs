@@ -5,11 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Laboratorio_2_ABB.Clases;
 using Laboratorio_2_ABB.Models;
-<<<<<<< HEAD
-using ClassLibary1;
-=======
+using Estructuras_de_datos;
 
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
 
 namespace Laboratorio_2_ABB.Controllers
 {
@@ -19,16 +16,10 @@ namespace Laboratorio_2_ABB.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
+
         // GET: Pais
         public ActionResult IndexPais()
         {
-=======
-            // GET: Pais
-        public ActionResult IndexPais()
-        {
-            //Data.Instance.listaPaises.Add(new Models.Pais { id = Data.Instance.listaPaises.Count(), Nombre = "Guate", Grupo = "A" });
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
             return View(Data.Instance.listaPaises);
         }
         // GET: int
@@ -57,6 +48,89 @@ namespace Laboratorio_2_ABB.Controllers
             Data.Instance.listaPaises = Data.Instance.ABB.Orders(order);
             return RedirectToAction("IndexPais");
         }
+        public ActionResult IsBalancedPais()
+        {
+            bool bal = Data.Instance.ABB.IsBalanced();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra esta balanceado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no esta balanceado");
+            }
+            return View("IndexPais", Data.Instance.listaPaises);
+        }
+
+        public ActionResult IsBalancedInt()
+        {
+            bool bal = Data.Instance.intABB.IsBalanced();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra esta balanceado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no esta balanceado");
+            }
+            return View("IndexInt", Data.Instance.listaInt);
+        }
+
+        public ActionResult IsBalancedString()
+        {
+            bool bal = Data.Instance.stringABB.IsBalanced();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra esta balanceado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no esta balanceado");
+            }
+            return View("IndexString", Data.Instance.listaString);
+        }
+
+        public ActionResult IsDegeneratePais()
+        {
+            bool bal = Data.Instance.ABB.IsDegenerate();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra es un arbol degenerado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no es un arbol degenerado");
+            }
+            return View("IndexPais", Data.Instance.listaPaises);
+        }
+
+        public ActionResult IsDegenerateInt()
+        {
+            bool bal = Data.Instance.intABB.IsDegenerate();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra es un arbol degenerado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no es un arbol degenerado");
+            }
+            return View("IndexInt", Data.Instance.listaInt);
+        }
+
+        public ActionResult IsDegenerateString()
+        {
+            bool bal = Data.Instance.stringABB.IsDegenerate();
+            if (bal)
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra es un arbol degenerado");
+            }
+            else
+            {
+                ViewBag.Message = string.Format("El arbol que se muestra no es un arbol degenerado");
+            }
+            return View("IndexString", Data.Instance.listaString);
+        }
 
         // GET: Pais/Details/5
         public ActionResult Details(int id)
@@ -64,15 +138,15 @@ namespace Laboratorio_2_ABB.Controllers
             return View();
         }
 
-        // GET: Pais/Create
-        public ActionResult Create()
+        // GET: Pais/AddPais
+        public ActionResult AddPais()
         {
             return View();
         }
 
-        // POST: Pais/Create
+        // POST: Pais/AddPais
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult AddPais(FormCollection collection)
         {
             try
             {
@@ -83,15 +157,57 @@ namespace Laboratorio_2_ABB.Controllers
                     Nombre = collection["Nombre"],
                     Grupo = collection["Grupo"]
                 });
-
-                Data.Instance.listaPaises.Add(new Pais
-                {
-                    id = Data.Instance.ABB.GetHeight(null),
-                    Nombre = collection["Nombre"],
-                    Grupo = collection["Grupo"]
-                });
+                Data.Instance.listaPaises = Data.Instance.ABB.Orders("InOrder");
 
                 return RedirectToAction("IndexPais");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Pais/AddInt
+        public ActionResult AddInt()
+        {
+            return View();
+        }
+
+        // POST: Pais/AddInt
+        [HttpPost]
+        public ActionResult AddInt(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                Data.Instance.intABB.Insert(Convert.ToInt32(collection["Valor"]));
+                Data.Instance.listaInt = Data.Instance.intABB.Orders("InOrder");
+
+                return RedirectToAction("IndexInt");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Pais/AddString
+        public ActionResult AddString()
+        {
+            return View();
+        }
+
+        // POST: Pais/AddString
+        [HttpPost]
+        public ActionResult AddString(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                Data.Instance.stringABB.Insert(collection["Valor"]);
+                Data.Instance.listaString = Data.Instance.stringABB.Orders("InOrder");
+
+                return RedirectToAction("IndexString");
             }
             catch
             {
@@ -124,24 +240,74 @@ namespace Laboratorio_2_ABB.Controllers
             }
         }
 
-        // GET: Pais/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Pais/DeletePais/5
+        public ActionResult DeletePais(int id)
         {
             var pais = Data.Instance.listaPaises.Find(x => x.id == id);
             return View(pais);
         }
 
-        // POST: Pais/Delete/5
+        // POST: Pais/DeletePais/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeletePais(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
                 Pais pais = Data.Instance.listaPaises.Find(x => x.id == id);
                 Data.Instance.ABB.Eliminar(pais);
-                Data.Instance.listaPaises.Remove(pais);
+                Data.Instance.listaPaises = Data.Instance.ABB.Orders("InOrder");
                 return RedirectToAction("IndexPais");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Pais/DeleteInt/5
+        public ActionResult DeleteInt(int id)
+        {
+            var valor = Data.Instance.listaInt.Find(x => x == id);
+            return View(valor);
+        }
+
+        // POST: Pais/DeleteInt/5
+        [HttpPost]
+        public ActionResult DeleteInt(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                var valor = Data.Instance.listaInt.Find(x => x == id);
+                Data.Instance.intABB.Eliminar(valor);
+                Data.Instance.listaInt = Data.Instance.intABB.Orders("InOrder");
+                return RedirectToAction("IndexInt");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Pais/DeleteString/5
+        public ActionResult DeleteString(string id)
+        {
+            var valor = Data.Instance.listaString.Find(x => x == id);
+            return View(valor);
+        }
+
+        // POST: Pais/DeleteString/5
+        [HttpPost]
+        public ActionResult DeleteString(string id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                var valor = Data.Instance.listaString.Find(x => x == id);
+                Data.Instance.stringABB.Eliminar(valor);
+                Data.Instance.listaString = Data.Instance.stringABB.Orders("InOrder");
+                return RedirectToAction("IndexString");
             }
             catch
             {

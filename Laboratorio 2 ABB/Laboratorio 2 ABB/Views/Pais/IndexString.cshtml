@@ -7,9 +7,13 @@
 <h2>IndexString</h2>
 
 <p>
-    @Html.ActionLink("Upload Json File", "Upload")
+    @Html.ActionLink("Upload Json File", "UploadString")
+
+    @Html.ActionLink("Add String", "AddString")
 </p>
 <p ALIGN="right">
+    @Html.ActionLink("Is Degenerate?", "IsDegenerateString")
+    @Html.ActionLink("Is Balanced?", "IsBalancedString")
     @Html.ActionLink("Pre-Orden", "OrdenString", new { order = "PreOrder" })&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("In-Orden", "OrdenString", new { order = "InOrder" })&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("Post-orden", "OrdenString", new { order = "PostOrder" })
@@ -29,11 +33,20 @@
                 @Html.DisplayFor(modelItem => item)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                @*@Html.ActionLink("Edit", "Edit", new { id = item }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item }) |*@
+                @Html.ActionLink("Delete", "DeleteString", new { id = item })
             </td>
         </tr>
     }
 
 </table>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}

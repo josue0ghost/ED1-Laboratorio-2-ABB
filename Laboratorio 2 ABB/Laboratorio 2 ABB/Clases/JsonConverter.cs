@@ -6,7 +6,7 @@ using System.Web;
 using Newtonsoft.Json;
 using Estructuras_de_datos;
 
-namespace ClassLibary1
+namespace Laboratorio_2_ABB.Clases
 {
     public class JsonConverter<T>
     {

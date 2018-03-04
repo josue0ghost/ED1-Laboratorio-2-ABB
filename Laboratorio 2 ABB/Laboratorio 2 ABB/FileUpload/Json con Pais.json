@@ -1,0 +1,29 @@
+{
+      "value": {
+         "Nombre": 'Guatemala',
+         "Grupo": 'A'
+      },
+       "left": {
+        "value":{
+         "Nombre": 'Mexico',
+         "Grupo": 'B'
+        },
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "value": {
+         "Nombre": 'Salvador',
+         "Grupo": 'C'
+        },
+        "left": {
+          "value": {
+            "Nombre": 'Honduras',
+            "Grupo": 'D'
+          },
+          "left": null,
+          "right": null
+        },
+        "right": null
+      }
+}

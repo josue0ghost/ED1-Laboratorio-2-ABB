@@ -141,12 +141,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Data.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Clases\JsonConverter.cs" />
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LecturaJson.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,7 +186,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="FileUpload\document.json" />
+    <Content Include="FileUpload\Json con Int.json" />
+    <Content Include="FileUpload\Json con Pais.json" />
+    <Content Include="FileUpload\Json con Strings.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -245,14 +243,14 @@
     <Content Include="Views\Pais\Home.cshtml" />
     <Content Include="Views\Pais\IndexInt.cshtml" />
     <Content Include="Views\Pais\IndexString.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Pais\UploadInt.cshtml" />
     <Content Include="Views\Pais\UploadString.cshtml" />
     <Content Include="Views\Pais\UploadPais.cshtml" />
-=======
-    <Content Include="Views\Pais\Create.cshtml" />
-    <Content Include="Views\Pais\Edit.cshtml" />
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
+    <Content Include="Views\Pais\AddPais.cshtml" />
+    <Content Include="Views\Pais\AddInt.cshtml" />
+    <Content Include="Views\Pais\AddString.cshtml" />
+    <Content Include="Views\Pais\DeletePais.cshtml" />
+    <Content Include="Views\Pais\DeleteInt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,15 +265,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
-      <Project>{d652f9b4-5c3f-4fe7-92ff-9a4f648bd694}</Project>
-      <Name>ClassLibrary1</Name>
-=======
     <ProjectReference Include="..\Estructuras de datos\Estructuras de datos.csproj">
       <Project>{cd08d73a-5573-43a1-80c1-2ae37fd54bde}</Project>
       <Name>Estructuras de datos</Name>
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

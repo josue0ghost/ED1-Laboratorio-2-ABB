@@ -1,0 +1,17 @@
+{
+      "value": 'Hola',
+      "left": {
+        "value": 'Estoy',
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "value": 'Probando',
+        "left": {
+          "value": 'SiFunciona',
+          "left": null,
+          "right": null
+        },
+        "right": null
+      }
+}

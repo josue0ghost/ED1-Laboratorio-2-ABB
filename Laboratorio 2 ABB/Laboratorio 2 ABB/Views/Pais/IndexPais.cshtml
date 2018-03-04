@@ -7,14 +7,14 @@
 <h2>IndexPais</h2>
 
 <p>
-<<<<<<< HEAD
+
     @Html.ActionLink("Upload Json File", "UploadPais")
-=======
-    @Html.ActionLink("Upload Json File", "UploadInt")
-    @Html.ActionLink("Create", "Create")
->>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
+
+    @Html.ActionLink("Add Pais", "AddPais")
 </p>
 <p ALIGN="right">
+    @Html.ActionLink("Is Degenerate?", "IsDegeneratePais")
+    @Html.ActionLink("Is Balanced?", "IsBalancedPais")
     @Html.ActionLink("Pre-Orden", "OrdenPais", new { order = "PreOrder" })
     @Html.ActionLink("In-Orden", "OrdenPais", new { order = "InOrder" })
     @Html.ActionLink("Post-orden", "OrdenPais", new { order = "PostOrder" })
@@ -30,20 +30,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grupo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grupo)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item .id}) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.id }) |*@) |
+                @Html.ActionLink("Delete", "DeletePais", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
