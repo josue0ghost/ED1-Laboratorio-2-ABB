@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Estructuras_de_datos
+namespace ClassLibary1
 {
     public class BinaryTreeNode<T>
     {
@@ -28,6 +27,34 @@ namespace Estructuras_de_datos
         public bool IsLeaf() { return Left == null && Right == null; }
 
         public bool Full() { return Left != null && Right != null; }
+
+        public bool IsDegenerate()
+        {
+            if (this.Left != null)
+            {
+                if (this.Right != null)
+                {
+                    return false; // Un nodo fue encontrado con dos hijos
+                }
+                else
+                {
+                    return this.Left.IsDegenerate();
+                }
+            }
+            else
+            {
+                if (this.Right != null)
+                {
+                    return this.Right.IsDegenerate();
+                }
+                else
+                {
+                    return true; // Ningún nodo tiene dos hijos
+                }
+            }
+        }
+
+
     }
 
     public class Tree<T> where T : IComparable
@@ -216,61 +243,141 @@ namespace Estructuras_de_datos
             return Root == null;
         }
 
-        public bool DegeneratedTree()
+        public bool IsDegenerate()
         {
-            return true;
+            if (Root == null)
+                return false;
+
+            return Root.IsDegenerate();
         }
 
-        private void DegeneratedTree(BinaryTreeNode<T> Root)
+        public bool IsBalanced()
+        {
+            if (Root == null)
+                return true;
+
+            return IsBalanced(Root);
+        }
+
+        private int AbsoluteValue(int Minuendo, int Sustraendo)
+        {
+            if ((Minuendo - Sustraendo) < 0)
+            {
+                return (Minuendo - Sustraendo) * -1;
+            }
+            else
+            {
+                return (Minuendo - Sustraendo);
+            }
+        }
+
+        public bool IsBalanced(BinaryTreeNode<T> Node)
+        {
+            return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+        }
+
+        public BinaryTreeNode<T> FindUnbalancedNode()
+        {
+            return FindUnbalancedNode(Root);
+        }
+
+        private BinaryTreeNode<T> FindUnbalancedNode(BinaryTreeNode<T> Node)
+        {
+            if (Node != null)
+            {
+                int Balance = AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right));
+                if (Balance <= 1)
+                {
+                    if (Node.Left != null)
+                    {
+                        return FindUnbalancedNode(Node.Left);
+                    }
+                    else
+                    {
+                        return FindUnbalancedNode(Node.Right);
+                    }
+                }
+                else
+                {
+                    return Node;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public int GetHeight(BinaryTreeNode<T> Node)
+        {
+            if (Node == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int LeftHeight = GetHeight(Node.Left);
+                int RightHeight = GetHeight(Node.Right);
+
+                if (LeftHeight < RightHeight)
+                {
+                    return LeftHeight + 1;
+                }
+                else
+                {
+                    return RightHeight + 1;
+                }
+            }
+        }
+
+        private void InOrder(BinaryTreeNode<T> Root, ref List<T> Elements)
         {
             if (Root != null)
-                DegeneratedTree(Root.Left);
-                
+            {
+                InOrder(Root.Left, ref Elements);
+                Elements.Add(Root.Value);
+                InOrder(Root.Right, ref Elements);
+            }
         }
 
-        public string InOrder()
-        {
-            string Content = string.Empty;
-            InOrder(Root, ref Content);
-            return Content;
-        }
-
-        private void InOrder(BinaryTreeNode<T> Root, ref string Content)
+        private void PostOrder(BinaryTreeNode<T> Root, ref List<T> Elements)
         {
             if (Root != null)
-                InOrder(Root.Left, ref Content);
-                Content += Root.Value.ToString() + "\n";
-                InOrder(Root.Right, ref Content);
+            {
+                PostOrder(Root.Left, ref Elements);
+                PostOrder(Root.Right, ref Elements);
+                Elements.Add(Root.Value);
+            }
         }
 
-        public string PostOrder()
-        {
-            string Content = string.Empty;
-            PostOrder(Root, ref Content);
-            return Content;
-        }
-
-        private void PostOrder(BinaryTreeNode<T> Root, ref string Content)
+        private void PreOrder(BinaryTreeNode<T> Root, ref List<T> Elements)
         {
             if (Root != null)
-                PostOrder(Root.Left, ref Content);
-                PostOrder(Root.Right, ref Content);
-                Content += Root.Value.ToString() + "\n";
+            {
+                Elements.Add(Root.Value);
+                PreOrder(Root.Left, ref Elements);
+                PreOrder(Root.Right, ref Elements);
+            }
         }
 
-        public string PreOrder()
+        public List<T> Orders(string Order)
         {
-            string Content = string.Empty;
-            PreOrder(Root, ref Content);
-            return Content;
-        }
-
-        private void PreOrder(BinaryTreeNode<T> Root, ref string Content)
-        {
-            if (Root != null)
-                Content += Root.Value.ToString() + "\n";
-                PreOrder(Root.Left, ref Content);
-                PreOrder(Root.Right, ref Content);
+            List<T> Elements = new List<T>();
+            switch (Order)
+            {
+                case "PreOrder":
+                    PreOrder(Root, ref Elements);
+                    break;
+                case "InOrder":
+                    InOrder(Root, ref Elements);
+                    break;
+                case "PostOrder":
+                    PostOrder(Root, ref Elements);
+                    break;
+            }
+            return Elements;
         }
     }
+
 }
