@@ -321,7 +321,22 @@ namespace Estructuras_de_datos
 
         public bool IsBalanced(BinaryTreeNode<T> Node)
         {
-            return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+            if (Node.Left == null && Node.Right != null)
+            {
+                return this.IsBalanced(Node.Right) && (AbsoluteValue(0, GetHeight(Node.Right)) <= 1);
+            }
+            else if (Node.Right == null && Node.Left != null)
+            {
+                return this.IsBalanced(Node.Left) && (AbsoluteValue(GetHeight(Node.Left), 0) <= 1);
+            }
+            else if (Node.Left == null && Node.Right == null)
+            {
+                return (AbsoluteValue(0, 0) <= 1);
+            }
+            else
+            {
+                return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+            }
         }
 
         public BinaryTreeNode<T> FindUnbalancedNode()
