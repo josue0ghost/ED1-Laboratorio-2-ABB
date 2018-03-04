@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio 2 ABB", "Laboratorio 2 ABB\Laboratorio 2 ABB.csproj", "{EFF08D8D-A28B-4042-AE5D-0D77845AE80A}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{D652F9B4-5C3F-4FE7-92FF-9A4F648BD694}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estructuras de datos", "Estructuras de datos\Estructuras de datos.csproj", "{CD08D73A-5573-43A1-80C1-2AE37FD54BDE}"
+>>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,17 @@ Global
 		{EFF08D8D-A28B-4042-AE5D-0D77845AE80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF08D8D-A28B-4042-AE5D-0D77845AE80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF08D8D-A28B-4042-AE5D-0D77845AE80A}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{D652F9B4-5C3F-4FE7-92FF-9A4F648BD694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D652F9B4-5C3F-4FE7-92FF-9A4F648BD694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D652F9B4-5C3F-4FE7-92FF-9A4F648BD694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D652F9B4-5C3F-4FE7-92FF-9A4F648BD694}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{CD08D73A-5573-43A1-80C1-2AE37FD54BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD08D73A-5573-43A1-80C1-2AE37FD54BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD08D73A-5573-43A1-80C1-2AE37FD54BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD08D73A-5573-43A1-80C1-2AE37FD54BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> f3236bd20f00812aa65a98a49eed59119b0bc4bb
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

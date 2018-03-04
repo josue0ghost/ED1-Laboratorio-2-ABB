@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ClassLibary1
+namespace Estructuras_de_datos
 {
     public class BinaryTreeNode<T>
     {
@@ -23,8 +26,6 @@ namespace ClassLibary1
         }
 
         public BinaryTreeNode(T value) : this(value, null, null, 0, 0) { }
-
-        public BinaryTreeNode() { }
 
         public bool IsLeaf() { return Left == null && Right == null; }
 
@@ -56,7 +57,7 @@ namespace ClassLibary1
             }
         }
 
-        
+
     }
 
     public class Tree<T> where T : IComparable
@@ -200,6 +201,49 @@ namespace ClassLibary1
             return nAux;
         }
 
+        public BinaryTreeNode<T> Edit(T valor)
+        {
+            BinaryTreeNode<T> nAux = Root;
+            BinaryTreeNode<T> nPadre = Root;
+            bool isLeftLeaf = true;
+
+            while (nAux.Value.CompareTo(valor) != 0)
+            {
+                nPadre = nAux;
+                if (valor.CompareTo(nAux.Value) <= 0)
+                {
+                    isLeftLeaf = true;
+                    nAux = nAux.Left;
+                }
+                else
+                {
+                    isLeftLeaf = false;
+                    nAux = nAux.Left;
+                }
+
+                if (nAux == null)
+                    return null;
+            }
+
+            BinaryTreeNode<T> nReplace = Replace(nAux);
+            if (nAux == Root)
+            {
+                Root = nReplace;
+            }
+            else if (isLeftLeaf)
+            {
+                nPadre.Left = nReplace;
+            }
+            else
+            {
+                nPadre.Right = nReplace;
+            }
+            nReplace.Left = nAux.Left;
+
+            return nReplace;
+
+        }
+
         private BinaryTreeNode<T> Replace(BinaryTreeNode<T> nElimina)
         {
             BinaryTreeNode<T> rPadre = nElimina;
@@ -275,7 +319,7 @@ namespace ClassLibary1
 
         public bool IsBalanced(BinaryTreeNode<T> Node)
         {
-                return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+            return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
         }
 
         public BinaryTreeNode<T> FindUnbalancedNode()
