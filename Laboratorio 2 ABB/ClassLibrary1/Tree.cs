@@ -53,6 +53,8 @@ namespace ClassLibary1
                 }
             }
         }
+
+        
     }
 
     public class Tree<T> where T : IComparable
@@ -243,7 +245,90 @@ namespace ClassLibary1
 
         public bool IsDegenerate()
         {
+            if (Root == null)
+                return false;
+
             return Root.IsDegenerate();
+        }
+
+        public bool IsBalanced()
+        {
+            if (Root == null)
+                return true;
+
+            return IsBalanced(Root);
+        }
+
+        private int AbsoluteValue(int Minuendo, int Sustraendo)
+        {
+            if ((Minuendo - Sustraendo) < 0)
+            {
+                return (Minuendo - Sustraendo) * -1;
+            }
+            else
+            {
+                return (Minuendo - Sustraendo);
+            }
+        }
+
+        public bool IsBalanced(BinaryTreeNode<T> Node)
+        {
+                return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+        }
+
+        public BinaryTreeNode<T> FindUnbalancedNode()
+        {
+            return FindUnbalancedNode(Root);
+        }
+
+        private BinaryTreeNode<T> FindUnbalancedNode(BinaryTreeNode<T> Node)
+        {
+            if (Node != null)
+            {
+                int Balance = AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right));
+                if (Balance <= 1)
+                {
+                    if (Node.Left != null)
+                    {
+                        return FindUnbalancedNode(Node.Left);
+                    }
+                    else
+                    {
+                        return FindUnbalancedNode(Node.Right);
+                    }
+                }
+                else
+                {
+                    return Node;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public int GetHeight(BinaryTreeNode<T> Node)
+        {
+            if (Node == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int LeftHeight = GetHeight(Node.Left);
+                int RightHeight = GetHeight(Node.Right);
+
+                if (LeftHeight < RightHeight)
+                {
+                    return LeftHeight + 1;
+                }
+                else
+                {
+                    return RightHeight + 1;
+                }
+            }
         }
 
         private void InOrder(BinaryTreeNode<T> Root, ref List<T> Elements)
