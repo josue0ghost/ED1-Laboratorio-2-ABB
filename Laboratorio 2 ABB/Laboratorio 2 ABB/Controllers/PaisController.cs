@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Laboratorio_2_ABB.Clases;
+using Laboratorio_2_ABB.Models;
+
 
 namespace Laboratorio_2_ABB.Controllers
 {
@@ -14,9 +16,9 @@ namespace Laboratorio_2_ABB.Controllers
             return View();
         }
             // GET: Pais
-            public ActionResult IndexPais()
+        public ActionResult IndexPais()
         {
-            Data.Instance.listaPaises.Add(new Models.Pais { id = Data.Instance.listaPaises.Count(), Nombre = "Guate", Grupo = "A" });
+            //Data.Instance.listaPaises.Add(new Models.Pais { id = Data.Instance.listaPaises.Count(), Nombre = "Guate", Grupo = "A" });
             return View(Data.Instance.listaPaises);
         }
         // GET: int
@@ -52,8 +54,21 @@ namespace Laboratorio_2_ABB.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Data.Instance.ABB.Insert(new Pais
+                {
+                    id = Data.Instance.ABB.GetHeight(null),
+                    Nombre = collection["Nombre"],
+                    Grupo = collection["Grupo"]
+                });
 
-                return RedirectToAction("Index");
+                Data.Instance.listaPaises.Add(new Pais
+                {
+                    id = Data.Instance.ABB.GetHeight(null),
+                    Nombre = collection["Nombre"],
+                    Grupo = collection["Grupo"]
+                });
+
+                return RedirectToAction("IndexPais");
             }
             catch
             {
@@ -64,7 +79,8 @@ namespace Laboratorio_2_ABB.Controllers
         // GET: Pais/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var pais = Data.Instance.listaPaises.Find(x => x.id == id);
+            return View(pais);
         }
 
         // POST: Pais/Edit/5
@@ -74,8 +90,10 @@ namespace Laboratorio_2_ABB.Controllers
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                Pais pais = Data.Instance.listaPaises.Find(x => x.id == id);
+                Data.Instance.ABB.Eliminar(pais);
+                Data.Instance.listaPaises.Insert(id, pais);
+                return RedirectToAction("IndexPais");
             }
             catch
             {
@@ -86,7 +104,8 @@ namespace Laboratorio_2_ABB.Controllers
         // GET: Pais/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var pais = Data.Instance.listaPaises.Find(x => x.id == id);
+            return View(pais);
         }
 
         // POST: Pais/Delete/5
@@ -96,8 +115,10 @@ namespace Laboratorio_2_ABB.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Pais pais = Data.Instance.listaPaises.Find(x => x.id == id);
+                Data.Instance.ABB.Eliminar(pais);
+                Data.Instance.listaPaises.Remove(pais);
+                return RedirectToAction("IndexPais");
             }
             catch
             {

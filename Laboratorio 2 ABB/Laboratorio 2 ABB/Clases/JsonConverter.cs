@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Laboratorio_2_ABB.Clases;
 using Newtonsoft.Json;
+using Estructuras_de_datos;
 
 namespace Laboratorio_2_ABB.Clases
 {

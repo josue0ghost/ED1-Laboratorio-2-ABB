@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Laboratorio_2_ABB.Clases;
 using Laboratorio_2_ABB.Models;
+using Estructuras_de_datos;
 
 namespace Laboratorio_2_ABB.Clases
 {
@@ -19,7 +20,7 @@ namespace Laboratorio_2_ABB.Clases
                 return instance;
             }
         }
-
+        
         public Tree<Pais> ABB = new Tree<Pais>();
         public List<Pais> listaPaises = new List<Pais>();
         public Tree<StringNode> stringABB = new Tree<StringNode>();

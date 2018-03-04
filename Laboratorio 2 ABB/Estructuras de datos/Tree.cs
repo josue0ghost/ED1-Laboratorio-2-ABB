@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ClassLibary1
+namespace Estructuras_de_datos
 {
     public class BinaryTreeNode<T>
     {
@@ -196,6 +199,49 @@ namespace ClassLibary1
             }
 
             return nAux;
+        }
+
+        public BinaryTreeNode<T> Edit(T valor)
+        {
+            BinaryTreeNode<T> nAux = Root;
+            BinaryTreeNode<T> nPadre = Root;
+            bool isLeftLeaf = true;
+
+            while (nAux.Value.CompareTo(valor) != 0)
+            {
+                nPadre = nAux;
+                if (valor.CompareTo(nAux.Value) <= 0)
+                {
+                    isLeftLeaf = true;
+                    nAux = nAux.Left;
+                }
+                else
+                {
+                    isLeftLeaf = false;
+                    nAux = nAux.Left;
+                }
+
+                if (nAux == null)
+                    return null;
+            }
+
+            BinaryTreeNode<T> nReplace = Replace(nAux);
+            if (nAux == Root)
+            {
+                Root = nReplace;
+            }
+            else if (isLeftLeaf)
+            {
+                nPadre.Left = nReplace;
+            }
+            else
+            {
+                nPadre.Right = nReplace;
+            }
+            nReplace.Left = nAux.Left;
+
+            return nReplace;
+
         }
 
         private BinaryTreeNode<T> Replace(BinaryTreeNode<T> nElimina)

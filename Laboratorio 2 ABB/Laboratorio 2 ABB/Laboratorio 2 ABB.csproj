@@ -142,7 +142,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Data.cs" />
     <Compile Include="Clases\JsonConverter.cs" />
-    <Compile Include="Clases\Tree.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LecturaJson.cs" />
     <Compile Include="Controllers\PaisController.cs" />
@@ -243,6 +242,8 @@
     <Content Include="Views\Pais\Home.cshtml" />
     <Content Include="Views\Pais\IndexInt.cshtml" />
     <Content Include="Views\Pais\IndexString.cshtml" />
+    <Content Include="Views\Pais\Create.cshtml" />
+    <Content Include="Views\Pais\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -255,6 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Estructuras de datos\Estructuras de datos.csproj">
+      <Project>{cd08d73a-5573-43a1-80c1-2ae37fd54bde}</Project>
+      <Name>Estructuras de datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
