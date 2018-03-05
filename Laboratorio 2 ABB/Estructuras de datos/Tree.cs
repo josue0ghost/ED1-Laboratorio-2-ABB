@@ -321,21 +321,25 @@ namespace Estructuras_de_datos
 
         public bool IsBalanced(BinaryTreeNode<T> Node)
         {
+            bool Valor;
             if (Node.Left == null && Node.Right != null)
             {
-                return this.IsBalanced(Node.Right) && (AbsoluteValue(0, GetHeight(Node.Right)) <= 1);
+                Valor = this.IsBalanced(Node.Right) && (AbsoluteValue(0, GetHeight(Node.Right)) <= 1);
+                return Valor;
             }
             else if (Node.Right == null && Node.Left != null)
             {
-                return this.IsBalanced(Node.Left) && (AbsoluteValue(GetHeight(Node.Left), 0) <= 1);
+                Valor = this.IsBalanced(Node.Left) && (AbsoluteValue(GetHeight(Node.Left), 0) <= 1);
+                return Valor;
             }
             else if (Node.Left == null && Node.Right == null)
             {
-                return (AbsoluteValue(0, 0) <= 1);
+                return true;
             }
             else
             {
-                return this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+                Valor = this.IsBalanced(Node.Left) && this.IsBalanced(Node.Right) && (AbsoluteValue(GetHeight(Node.Left), GetHeight(Node.Right)) <= 1);
+                return Valor;
             }
         }
 
@@ -376,14 +380,14 @@ namespace Estructuras_de_datos
         {
             if (Node == null)
             {
-                return 0;
+                return -1;
             }
             else
             {
                 int LeftHeight = GetHeight(Node.Left);
                 int RightHeight = GetHeight(Node.Right);
 
-                if (LeftHeight < RightHeight)
+                if (LeftHeight > RightHeight)
                 {
                     return LeftHeight + 1;
                 }
